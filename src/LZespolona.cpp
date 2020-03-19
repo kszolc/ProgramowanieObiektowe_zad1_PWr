@@ -69,6 +69,10 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
   }
   return Wynik;
 }
+bool  operator == (LZespolona  Skl1,  LZespolona  Skl2)
+{
+  return(KwMod(Skl1-Skl2)<0.00001);
+}
 /*!
  * Zwraca wynik sprzężenia danej liczby zespolonej
  */
@@ -82,7 +86,7 @@ LZespolona Sprz(LZespolona  LZ){
  * Zwraca kwadrat modułu danej loczby zespolonej
  */
 int KwMod(LZespolona  LZ){
-  return (LZ.re*LZ.re) + (LZ.im*LZ.im);
+  return (LZ.re*LZ.re) + (LZ.im*LZ.im); 
 }
 
 
