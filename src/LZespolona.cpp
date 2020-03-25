@@ -71,7 +71,7 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
 }
 bool  operator == (LZespolona  Skl1,  LZespolona  Skl2)
 {
-  return(KwMod(Skl1-Skl2)<0.00001);
+  return(KwMod(Skl1-Skl2)<0.001);
 }
 /*!
  * Zwraca wynik sprzężenia danej liczby zespolonej

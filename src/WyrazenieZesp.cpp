@@ -15,11 +15,10 @@ using namespace std;
 /*!
  * Funkcja wyswietlająca daną liczbę zespoloną 
  */
-std::ostream & operator << (std::ostream &out, const LZespolona &z1)
-{
-    cout << noshowpos<< "(" << z1.re;
-    cout << showpos << z1.im << "i)";
-    cout << noshowpos;
+std::ostream & operator << (std::ostream &out, const LZespolona &z1){
+    out << noshowpos<< "(" << z1.re;
+    out << showpos << z1.im << "i)";
+    out << noshowpos;
     return out;
 }
 
@@ -28,12 +27,43 @@ std::ostream & operator << (std::ostream &out, const LZespolona &z1)
  */
 std::istream & operator >> (std::istream &in, LZespolona &z1)
 {
-    char a;
-    char b;
-    char c;
-    do{
-     cin >> a >> z1.re >> z1.im >> b >> c;
-    }while(a == '(' && b == 'i' && c == ')');
+    string inString; 
+    string real;
+    string imaginated;
+    string com = "Niepoprawny format liczby zespolonej. Spróbuj jeszcze raz.\n\n";
+    size_t letI, plus, minus;
+    int pos;
+    bool push = 0;
+
+    while(!push){
+      in >> inString;
+      size_t first = inString.find("(",0,1);
+      size_t last = inString.find(")");
+      
+        // sprawdzanie czy są nawiasy
+      if (first != string::npos && last != string::npos){
+         //sprawdzanie gdzie jest "środek" naszej liczby zespolonej
+          plus = inString.find("+");
+          minus = inString.find("-");
+
+         if (plus != string::npos || minus != string::npos){
+            //szukanie litery i
+            if(plus != string::npos){
+
+             letI = inString.find("i",plus); 
+             pos = plus;
+            }else{
+             letI = inString.find("i",minus); 
+             pos = minus;
+            }
+         }else cout << com;
+         if(letI != string::npos){
+             z1.re = stod(inString.substr(first+1,pos-1));
+             z1.im = stod(inString.substr(pos,last-3));
+             push = !push;
+         }else cout << com;
+      }else cout << com;
+    }
     return in;
 }
 
