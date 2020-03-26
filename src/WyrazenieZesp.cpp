@@ -34,7 +34,7 @@ std::istream & operator >> (std::istream &in, LZespolona &z1)
     size_t letI, plus, minus;
     int pos;
     bool push = 0;
-
+    
     while(!push){
       in >> inString;
       size_t first = inString.find("(",0,1);

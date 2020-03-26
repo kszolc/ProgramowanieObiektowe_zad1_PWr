@@ -69,6 +69,34 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
   }
   return Wynik;
 }
+/*!
+ * Realizuje dodawanie z nadpisaniem dwoch liczb zespolonych.
+ * Argumenty:
+ *    Skl1 - pierwszy skladnik dodawania, który zostanie nadpisany,
+ *    Skl2 - drugi skladnik dodawania.
+ * Zwraca:
+ *    nadpisany pierwszy składnik
+ */
+LZespolona operator+=(LZespolona& Skl1, LZespolona Skl2)
+{
+    Skl1.re += Skl2.re;
+    Skl1.im += Skl2.im;
+    return Skl1;
+}
+/*!
+ * Realizuje odejmowanie z nadpisaniem dwoch liczb zespolonych.
+ * Argumenty:
+ *    Skl1 - pierwszy skladnik odejmowania, który zostanie nadpisany,
+ *    Skl2 - drugi skladnik odejmowania.
+ * Zwraca:
+ *    nadpisany pierwszy składnik
+ */
+LZespolona operator-=(LZespolona& Skl1, LZespolona Skl2)
+{
+    Skl1.re -= Skl2.re;
+    Skl1.im -= Skl2.im;
+    return Skl1;
+}
 bool  operator == (LZespolona  Skl1,  LZespolona  Skl2)
 {
   return(KwMod(Skl1-Skl2)<0.001);

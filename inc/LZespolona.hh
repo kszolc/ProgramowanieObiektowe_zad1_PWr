@@ -40,6 +40,14 @@ LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2);
  */
 bool  operator == (LZespolona  Skl1,  LZespolona  Skl2);
 /* 
+ * Przeciążenie operatora dodawania
+ */
+LZespolona  operator+= (LZespolona&  Skl1,LZespolona Skl2 );
+/* 
+ * Przeciążenie operatora odejmowania
+ */
+LZespolona  operator -= (LZespolona&  Skl1,  LZespolona  Skl2);
+/* 
  * Przeciążenie operatorów wejścia w wyjścia
  */
 std::istream & operator >> (std::istream &in,  LZespolona &z1);
